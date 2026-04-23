@@ -1,6 +1,6 @@
 {
   "name": "@rednevsky/sa-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript SDK for on-chain product analytics on Stacks — track page views, actions, conversions, and custom events via the analytics-tracker Clarity contract",
   "keywords": [
     "stacks",
