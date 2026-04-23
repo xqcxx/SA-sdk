@@ -1,0 +1,67 @@
+{
+  "name": "SA-sdk",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for on-chain product analytics on Stacks — track page views, actions, conversions, and custom events via the analytics-tracker Clarity contract",
+  "keywords": [
+    "stacks",
+    "stacks-blockchain",
+    "analytics",
+    "on-chain",
+    "clarity",
+    "web3",
+    "product-analytics",
+    "SA-sdk"
+  ],
+  "license": "MIT",
+  "author": "Xqcxx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xqcxx/SA-sdk"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "tsc -p tsconfig.cjs.json && node scripts/fix-cjs.js",
+    "build:esm": "tsc -p tsconfig.esm.json && node -e \"require('fs').writeFileSync('dist/esm/package.json',JSON.stringify({type:'module'}))\"",
+    "build:types": "tsc -p tsconfig.types.json",
+    "clean": "rm -rf dist",
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@stacks/transactions": "^7.0.0",
+    "@stacks/network": "^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@stacks/transactions": {
+      "optional": false
+    },
+    "@stacks/network": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@stacks/network": "^7.3.1",
+    "@stacks/transactions": "^7.3.1",
+    "typescript": "^5.5.0"
+  }
+}
